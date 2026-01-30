@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS - Selemen Clone
+   ============================================ */
+
+@theme {
+  /* Colors */
+  --color-primary: #708573;
+  --color-secondary: #18191f;
+  --color-accent: #ff5268;
+  --color-background: #18191f;
+  --color-foreground: #ffffff;
+  --color-foreground-muted: rgba(255, 255, 255, 0.75);
+  --color-foreground-subtle: rgba(255, 255, 255, 0.6);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+
+  /* Neutrals */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.5rem;
+  --font-size-6xl: 5rem;
+  --font-size-7xl: 7rem;
+  --font-size-8xl: 10rem;
+  --font-size-display: clamp(4rem, 15vw, 12rem);
+
+  /* Spacing */
+  --spacing-section: clamp(4rem, 10vh, 8rem);
+  --spacing-container: clamp(1rem, 5vw, 3rem);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  --transition-slower: 800ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-overlay: 500;
+  --z-max: 9999;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-foreground);
+}
+
+/* Focus States for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent);
+  color: white;
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-display {
+  font-size: var(--font-size-display);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+.text-heading-1 {
+  font-size: clamp(3rem, 8vw, var(--font-size-7xl));
+}
+
+.text-heading-2 {
+  font-size: clamp(2rem, 5vw, var(--font-size-5xl));
+}
+
+.text-heading-3 {
+  font-size: clamp(1.5rem, 3vw, var(--font-size-3xl));
+}
+
+.text-body {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--color-foreground-muted);
+}
+
+.text-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-inline: var(--spacing-container);
+}
+
+.section {
+  padding-block: var(--spacing-section);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s var(--transition-slower) forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.8s var(--transition-slower) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s var(--transition-slower) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s var(--transition-slower) forwards;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-foreground);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.btn:hover {
+  border-color: var(--color-foreground);
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.btn-primary {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+/* Lines/Dividers */
+.line-h {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.line-v {
+  width: 1px;
+  height: 100%;
+  background: var(--color-border);
+}
+
+/* Number badges */
+.number-badge {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-foreground-muted);
+}
+
+/* Image hover effects */
+.img-hover {
+  overflow: hidden;
+}
+
+.img-hover img {
+  transition: transform var(--transition-slower);
+}
+
+.img-hover:hover img {
+  transform: scale(1.05);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(24, 25, 31, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Gradient overlays */
+.gradient-bottom {
+  background: linear-gradient(to top, var(--color-background), transparent);
+}
+
+.gradient-top {
+  background: linear-gradient(to bottom, var(--color-background), transparent);
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
