@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 
+
 const portfolioProjects = [
   {
     id: 1,
@@ -13,6 +14,7 @@ const portfolioProjects = [
       es: 'Restaurante de Alta Cocina',
     },
     url: 'https://restaurant.studiomeyer.io',
+    slug: 'restaurant',
     challenge: {
       de: 'Ein 2-Sterne Michelin Restaurant in München brauchte eine digitale Präsenz, die dem kulinarischen Erlebnis gerecht wird — elegant, raffiniert und unvergesslich.',
       en: 'A 2-star Michelin restaurant in Munich needed a digital presence that lives up to the culinary experience — elegant, refined and unforgettable.',
@@ -36,6 +38,7 @@ const portfolioProjects = [
       es: 'Inmobiliaria de Lujo España',
     },
     url: 'https://immobilien.studiomeyer.io',
+    slug: 'immobilien',
     challenge: {
       de: 'Ein Premium-Immobilienmakler für Luxusobjekte in Spanien benötigte eine Website, die Exklusivität und Vertrauen vermittelt — für anspruchsvolle internationale Käufer.',
       en: 'A premium real estate agent for luxury properties in Spain needed a website that conveys exclusivity and trust — for discerning international buyers.',
@@ -59,6 +62,7 @@ const portfolioProjects = [
       es: 'Agencia Creativa Digital',
     },
     url: 'https://business.studiomeyer.io',
+    slug: 'business',
     challenge: {
       de: 'Eine aufstrebende Kreativagentur wollte sich von der Konkurrenz abheben — mit einer Website, die selbst ein Kunstwerk ist und ihre Innovationskraft demonstriert.',
       en: 'An emerging creative agency wanted to stand out from the competition — with a website that is itself a work of art and demonstrates their innovative power.',
@@ -82,6 +86,7 @@ const portfolioProjects = [
       es: 'Hotel Boutique Mallorca',
     },
     url: 'https://hotel.studiomeyer.io',
+    slug: 'hotel',
     challenge: {
       de: 'Ein exklusives Boutique-Hotel auf Mallorca suchte eine digitale Erweiterung ihres Gästeerlebnisses — mediterrane Eleganz trifft auf moderne Buchungsfunktionalität.',
       en: 'An exclusive boutique hotel in Mallorca was looking for a digital extension of their guest experience — Mediterranean elegance meets modern booking functionality.',
@@ -105,6 +110,7 @@ const portfolioProjects = [
       es: 'Biotecnología e Innovación',
     },
     url: 'https://constructive.studiomeyer.io',
+    slug: 'constructive',
     challenge: {
       de: 'Ein innovatives Biotech-Startup im Bereich mikrobieller Lösungen brauchte eine Website, die komplexe Wissenschaft verständlich und faszinierend präsentiert.',
       en: 'An innovative biotech startup in microbial solutions needed a website that presents complex science in an understandable and fascinating way.',
@@ -128,6 +134,7 @@ const portfolioProjects = [
       es: 'E-Commerce Premium',
     },
     url: 'https://shop.studiomeyer.io',
+    slug: 'shop',
     challenge: {
       de: 'Ein moderner Online-Shop für Premium-Produkte brauchte ein Einkaufserlebnis, das Luxus und Benutzerfreundlichkeit nahtlos vereint — schnell, elegant und conversion-optimiert.',
       en: 'A modern online store for premium products needed a shopping experience that seamlessly combines luxury and usability — fast, elegant and conversion-optimized.',
@@ -327,31 +334,46 @@ export default function PortfolioPage() {
                       </div>
                     </div>
 
-                    {/* iframe */}
-                    <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: '16/10' }}>
-                      {portfolioProjects.map((p, i) => (
-                        <iframe
-                          key={p.id}
-                          src={p.url}
-                          title={p.title}
-                          className="absolute inset-0 w-full h-full border-0 transition-opacity duration-500"
-                          style={{
-                            opacity: i === activeIndex ? 1 : 0,
-                            pointerEvents: i === activeIndex ? 'auto' : 'none',
-                          }}
-                          loading={i < 2 ? 'eager' : 'lazy'}
-                          sandbox="allow-scripts allow-same-origin"
-                        />
-                      ))}
+                    {/* Video/Screenshot Showcase */}
+                    <div
+                      className="portfolio-showcase relative w-full overflow-hidden bg-white group/preview"
+                      style={{ aspectRatio: '16/10' }}
+                      onMouseEnter={(e) => {
+                        const video = e.currentTarget.querySelector('video');
+                        if (video) video.play();
+                      }}
+                      onMouseLeave={(e) => {
+                        const video = e.currentTarget.querySelector('video');
+                        if (video) { video.pause(); video.currentTime = 0; }
+                      }}
+                    >
+                      {/* Screenshot thumbnail */}
+                      <img
+                        src={`/portfolio/${project.slug}.png`}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover/preview:opacity-0"
+                        loading={activeIndex < 2 ? 'eager' : 'lazy'}
+                      />
+
+                      {/* Scroll video */}
+                      <video
+                        key={project.slug}
+                        src={`/portfolio/${project.slug}.webm`}
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover/preview:opacity-100"
+                      />
 
                       {/* Hover overlay */}
                       <a
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors flex items-center justify-center group z-10"
+                        className="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors flex items-center justify-center group/link z-10"
                       >
-                        <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 backdrop-blur-sm px-5 py-2.5 rounded-full text-sm text-white flex items-center gap-2">
+                        <span className="opacity-0 group-hover/link:opacity-100 transition-opacity bg-black/80 backdrop-blur-sm px-5 py-2.5 rounded-full text-sm text-white flex items-center gap-2">
                           {t('livePreview')}
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
