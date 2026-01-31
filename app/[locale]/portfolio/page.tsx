@@ -237,7 +237,7 @@ export default function PortfolioPage() {
 
           <div className="h-full flex items-center">
             <div className="container max-w-7xl px-6 md:px-12">
-              <div className="grid md:grid-cols-[1fr_1.2fr] gap-8 lg:gap-16 items-center">
+              <div className="grid md:grid-cols-[0.8fr_1.4fr] gap-8 lg:gap-12 items-center">
                 {/* Left - Info */}
                 <div className="space-y-6 py-12">
                   {/* Number + Nav */}
@@ -349,7 +349,7 @@ export default function PortfolioPage() {
                     >
                       {/* Screenshot thumbnail */}
                       <img
-                        src={`/portfolio/${project.slug}.png`}
+                        src={`/portfolio/${project.slug}.webp`}
                         alt={project.title}
                         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover/preview:opacity-0"
                         loading={activeIndex < 2 ? 'eager' : 'lazy'}
@@ -358,7 +358,7 @@ export default function PortfolioPage() {
                       {/* Scroll video */}
                       <video
                         key={project.slug}
-                        src={`/portfolio/${project.slug}.webm`}
+                        src={`/portfolio/${project.slug}.mp4`}
                         muted
                         loop
                         playsInline
