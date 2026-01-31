@@ -18,12 +18,12 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'Design Studio | Premium Web Design & Development',
-  description: 'We create exceptional digital experiences with precision, creativity, and purpose. Premium web design and development studio.',
-  keywords: ['web design', 'development', 'premium', 'studio', 'digital experiences'],
-  authors: [{ name: 'Design Studio' }],
+  title: 'Studio Meyer | Premium Web Design & Development',
+  description: 'We create exceptional digital experiences with precision, creativity, and purpose. Premium web design and development studio based in Germany.',
+  keywords: ['web design', 'development', 'premium', 'studio', 'digital experiences', 'Studio Meyer'],
+  authors: [{ name: 'Studio Meyer' }],
   openGraph: {
-    title: 'Design Studio | Premium Web Design & Development',
+    title: 'Studio Meyer | Premium Web Design & Development',
     description: 'We create exceptional digital experiences with precision, creativity, and purpose.',
     type: 'website',
   },
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
+    <html className={`${inter.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
       <body>
         <a href="#main-content" className="skip-link">
           Skip to main content

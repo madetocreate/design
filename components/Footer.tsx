@@ -1,140 +1,99 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations();
   const currentYear = new Date().getFullYear();
-
-  const footerLinks = {
-    navigation: [
-      { label: 'Home', href: '/' },
-      { label: 'Projects', href: '/projects' },
-      { label: 'Services', href: '/services' },
-      { label: 'About', href: '/about' },
-      { label: 'Contact', href: '/contact' },
-    ],
-    services: [
-      { label: 'Web Design', href: '/services/web-design' },
-      { label: 'Brand Identity', href: '/services/branding' },
-      { label: 'Development', href: '/services/development' },
-      { label: 'Consulting', href: '/services/consulting' },
-    ],
-    social: [
-      { label: 'Instagram', href: 'https://instagram.com' },
-      { label: 'LinkedIn', href: 'https://linkedin.com' },
-      { label: 'Dribbble', href: 'https://dribbble.com' },
-      { label: 'Behance', href: 'https://behance.net' },
-    ],
-  };
 
   return (
     <footer className="relative border-t border-[var(--color-border)]">
-      {/* Main Footer */}
-      <div className="container py-16">
-        <div className="grid md:grid-cols-12 gap-12">
-          {/* Logo & Tagline */}
-          <div className="md:col-span-4">
-            <Link href="/" className="text-2xl tracking-wider font-light">
-              DESIGN<sup className="text-xs ml-0.5 opacity-60">®</sup>
-            </Link>
-            <p className="text-body mt-4 max-w-xs">
-              Premium digital design and development studio. Creating exceptional experiences since 2010.
-            </p>
-          </div>
+      {/* Main Footer - Minimal */}
+      <div className="container py-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          {/* Logo */}
+          <Link href="/" className="text-xl tracking-[0.15em] font-light uppercase">
+            Studio Meyer
+          </Link>
 
           {/* Navigation */}
-          <div className="md:col-span-2">
-            <h4 className="text-label mb-6">Navigation</h4>
-            <ul className="space-y-3">
-              {footerLinks.navigation.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <nav className="flex flex-wrap gap-6 md:gap-8 text-sm text-[var(--color-foreground-muted)]">
+            <Link href="/" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('nav.home')}
+            </Link>
+            <Link href="/portfolio" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('nav.portfolio')}
+            </Link>
+            <Link href="/services" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('nav.services')}
+            </Link>
+            <Link href="/about" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('nav.about')}
+            </Link>
+            <Link href="/contact" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('nav.contact')}
+            </Link>
+          </nav>
 
-          {/* Services */}
-          <div className="md:col-span-2">
-            <h4 className="text-label mb-6">Services</h4>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social */}
-          <div className="md:col-span-2">
-            <h4 className="text-label mb-6">Social</h4>
-            <ul className="space-y-3">
-              {footerLinks.social.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="md:col-span-2">
-            <h4 className="text-label mb-6">Contact</h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="mailto:hello@design.studio"
-                  className="text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] transition-colors"
-                >
-                  hello@design.studio
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+1234567890"
-                  className="text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] transition-colors"
-                >
-                  +1 234 567 890
-                </a>
-              </li>
-              <li className="text-[var(--color-foreground-muted)]">
-                New York, NY
-              </li>
-            </ul>
+          {/* Social Icons */}
+          <div className="flex gap-4">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] hover:border-[var(--color-foreground)] transition-all"
+              aria-label="Instagram"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] hover:border-[var(--color-foreground)] transition-all"
+              aria-label="LinkedIn"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a
+              href="https://dribbble.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-foreground-muted)] hover:text-[var(--color-foreground)] hover:border-[var(--color-foreground)] transition-all"
+              aria-label="Dribbble"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
+                <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
+                <path d="M8.56 2.75c4.37 6 6.56 12.25 7.13 19.25" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom Bar - Subtle */}
       <div className="container">
         <div className="border-t border-[var(--color-border)] py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-[var(--color-foreground-muted)]">
-            © {currentYear} Design Studio. All rights reserved.
+          <p className="text-xs text-[var(--color-foreground-subtle)]">
+            © {currentYear} {t('footer.copyright')}
           </p>
-          <div className="flex gap-6 text-sm text-[var(--color-foreground-muted)]">
+          <div className="flex gap-6 text-xs text-[var(--color-foreground-subtle)]">
             <Link href="/privacy" className="hover:text-[var(--color-foreground)] transition-colors">
-              Privacy Policy
+              {t('footer.privacy')}
             </Link>
-            <Link href="/terms" className="hover:text-[var(--color-foreground)] transition-colors">
-              Terms of Service
+            <Link href="/imprint" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('footer.imprint')}
             </Link>
           </div>
         </div>

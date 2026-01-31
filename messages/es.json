@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Studio Meyer | Diseño y Desarrollo Web Premium",
+    "description": "Creamos experiencias digitales excepcionales con precisión, creatividad y propósito."
+  },
+  "nav": {
+    "home": "Inicio",
+    "portfolio": "Portfolio",
+    "services": "Servicios",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "hero": {
+    "title": "Studio Meyer",
+    "tagline": "Estudio de Diseño Digital",
+    "scroll": "Desplazar",
+    "year": "2024"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Lo que ofrecemos",
+    "heroTitle": "Construimos experiencias",
+    "heroHighlight": "Digitales",
+    "heroDescription": "Desde la primera idea hasta el producto final — combinamos diseño, tecnología y estrategia para resultados excepcionales.",
+    "statsProjects": "Proyectos",
+    "statsYears": "Años de Experiencia",
+    "statsSatisfaction": "Satisfacción",
+    "statsSupport": "Soporte",
+    "learnMore": "Saber más",
+    "ctaLabel": "¿Listo para empezar?",
+    "ctaTitle": "Hablemos",
+    "webdesign": {
+      "title": "Diseño Web",
+      "description": "Sitios web personalizados que inspiran y convierten. Desde el concepto hasta la implementación pixel-perfect."
+    },
+    "development": {
+      "title": "Desarrollo",
+      "description": "Tecnologías modernas para aplicaciones web de alto rendimiento. Next.js, React, TypeScript — a prueba de futuro y escalable."
+    },
+    "ai": {
+      "title": "Integración IA",
+      "description": "Automatización inteligente y funciones impulsadas por IA. Chatbots, generación de contenido y decisiones basadas en datos."
+    },
+    "branding": {
+      "title": "Branding",
+      "description": "Identidad de marca que permanece en la memoria. Desde la estrategia hasta las directrices completas de marca."
+    }
+  },
+  "stats": {
+    "projects": "Proyectos",
+    "delivered": "entregados con éxito"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Nuestro Trabajo",
+    "description": "Descubre nuestros proyectos seleccionados. Cada sitio web cuenta una historia.",
+    "scrollToFlip": "Desplaza para pasar",
+    "challenge": "El Desafío",
+    "solution": "Nuestra Solución",
+    "visitWebsite": "Visitar sitio",
+    "livePreview": "Ver en vivo",
+    "readyToStart": "¿Listo para empezar?"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "description": "Somos un equipo de diseñadores y desarrolladores apasionados."
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Hablemos",
+    "description": "¿Listo para tu próximo proyecto? Esperamos tu mensaje.",
+    "email": "Email",
+    "phone": "Teléfono",
+    "address": "Dirección"
+  },
+  "footer": {
+    "copyright": "Studio Meyer. Todos los derechos reservados.",
+    "privacy": "Privacidad",
+    "imprint": "Aviso legal"
+  },
+  "cta": {
+    "learnMore": "Saber más",
+    "getInTouch": "Contactar",
+    "viewProject": "Ver proyecto"
+  }
+}

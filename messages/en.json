@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Studio Meyer | Premium Web Design & Development",
+    "description": "We create exceptional digital experiences with precision, creativity, and purpose."
+  },
+  "nav": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "title": "Studio Meyer",
+    "tagline": "Digital Design Studio",
+    "scroll": "Scroll",
+    "year": "2024"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "What we offer",
+    "heroTitle": "We build digital",
+    "heroHighlight": "Experiences",
+    "heroDescription": "From the first idea to the finished product — we combine design, technology and strategy for exceptional results.",
+    "statsProjects": "Projects",
+    "statsYears": "Years Experience",
+    "statsSatisfaction": "Satisfaction",
+    "statsSupport": "Support",
+    "learnMore": "Learn more",
+    "ctaLabel": "Ready to start?",
+    "ctaTitle": "Let's talk",
+    "webdesign": {
+      "title": "Web Design",
+      "description": "Custom websites that inspire and convert. From concept through UI/UX design to pixel-perfect implementation."
+    },
+    "development": {
+      "title": "Development",
+      "description": "Modern technologies for high-performance web applications. Next.js, React, TypeScript — future-proof and scalable."
+    },
+    "ai": {
+      "title": "AI Integration",
+      "description": "Intelligent automation and AI-powered features. Chatbots, content generation and data-driven decisions."
+    },
+    "branding": {
+      "title": "Branding",
+      "description": "Brand identity that stays memorable. From strategy through logo design to comprehensive brand guidelines."
+    }
+  },
+  "stats": {
+    "projects": "Projects",
+    "delivered": "successfully delivered"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Our Work",
+    "description": "Discover our selected projects. Each website tells a story.",
+    "scrollToFlip": "Scroll to flip",
+    "challenge": "The Challenge",
+    "solution": "Our Solution",
+    "visitWebsite": "Visit website",
+    "livePreview": "View live",
+    "readyToStart": "Ready to start?"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are a team of passionate designers and developers."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's talk",
+    "description": "Ready for your next project? We look forward to hearing from you.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "footer": {
+    "copyright": "Studio Meyer. All rights reserved.",
+    "privacy": "Privacy",
+    "imprint": "Imprint"
+  },
+  "cta": {
+    "learnMore": "Learn more",
+    "getInTouch": "Get in touch",
+    "viewProject": "View project"
+  }
+}

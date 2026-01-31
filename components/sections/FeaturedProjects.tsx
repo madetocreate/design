@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const projects = [
@@ -10,7 +9,7 @@ const projects = [
     title: 'AURORA',
     subtitle: 'HEIGHTS',
     tagline: 'Luxury real estate experience in the heart of the city',
-    image: 'https://picsum.photos/seed/project1/1920/1080',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80',
     href: '/projects/aurora-heights',
   },
   {
@@ -18,7 +17,7 @@ const projects = [
     title: 'MERIDIAN',
     subtitle: 'STUDIO',
     tagline: 'Creative agency rebranding and digital platform',
-    image: 'https://picsum.photos/seed/project2/1920/1080',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80',
     href: '/projects/meridian-studio',
   },
   {
@@ -26,7 +25,7 @@ const projects = [
     title: 'NOVA',
     subtitle: 'COLLECTIVE',
     tagline: 'Fashion brand identity and e-commerce design',
-    image: 'https://picsum.photos/seed/project3/1920/1080',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80',
     href: '/projects/nova-collective',
   },
 ];
@@ -56,7 +55,7 @@ export function FeaturedProjects() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -85,27 +84,26 @@ export function FeaturedProjects() {
             className="project-card block relative h-screen sticky top-0 transition-all duration-500 ease-out"
             style={{ zIndex: index + 1 }}
           >
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover"
-                priority={index === 0}
+            {/* Background Image - use div with background for reliable rendering */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div
+                className="absolute inset-0 transition-transform duration-700 hover:scale-105"
+                style={{
+                  backgroundImage: `url(${project.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               />
               <div className="absolute inset-0 bg-[var(--color-background)]/40" />
             </div>
 
             {/* Content */}
             <div className="relative h-full flex flex-col justify-center items-center text-center px-4">
-              {/* Title */}
               <h2 className="text-heading-1 md:text-display mb-2">
                 {project.title}
                 <span className="block text-[var(--color-primary)]">{project.subtitle}</span>
               </h2>
 
-              {/* Tagline */}
               <p className="text-body max-w-lg mt-4">
                 {project.tagline}
               </p>
