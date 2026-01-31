@@ -317,71 +317,53 @@ export default function PortfolioPage() {
                   </div>
                 </div>
 
-                {/* Right - Browser Preview */}
+                {/* Right - Screenshot Preview */}
                 <div className="relative py-8">
-                  <div className="relative w-full rounded-xl overflow-hidden border border-[var(--color-border)]/50 bg-[#0a0a0a] shadow-2xl">
-                    {/* Browser chrome */}
-                    <div className="flex items-center gap-2 px-4 py-2.5 bg-[#111] border-b border-white/5">
-                      <div className="flex gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                      </div>
-                      <div className="flex-1 mx-4">
-                        <div className="bg-[#1a1a1a] rounded-md px-3 py-1 text-[11px] text-white/30 text-center font-mono truncate">
-                          {project.url}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/card relative block w-full rounded-2xl overflow-hidden shadow-2xl"
+                    style={{ aspectRatio: '16/10' }}
+                  >
+                    {/* Screenshot */}
+                    <img
+                      src={`/portfolio/${project.slug}.webp`}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+                      loading={activeIndex < 2 ? 'eager' : 'lazy'}
+                    />
+
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+
+                    {/* Shine sweep effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                      <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover/card:translate-x-[200%] transition-transform duration-1000 ease-out skew-x-12" />
+                    </div>
+
+                    {/* Bottom info bar on hover */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover/card:translate-y-0 group-hover/card:opacity-100 transition-all duration-500 ease-out">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <p className="text-white/60 text-xs tracking-widest uppercase mb-1">
+                            {t('livePreview')}
+                          </p>
+                          <p className="text-white text-sm font-light tracking-wide">
+                            {project.url.replace('https://', '')}
+                          </p>
+                        </div>
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-sm transition-transform duration-300 group-hover/card:rotate-45"
+                          style={{ backgroundColor: `${project.color}40` }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                            <path d="M7 17L17 7M17 7H7M17 7v10" />
+                          </svg>
                         </div>
                       </div>
                     </div>
-
-                    {/* Video/Screenshot Showcase */}
-                    <div
-                      className="portfolio-showcase relative w-full overflow-hidden bg-white group/preview"
-                      style={{ aspectRatio: '16/10' }}
-                      onMouseEnter={(e) => {
-                        const video = e.currentTarget.querySelector('video');
-                        if (video) video.play();
-                      }}
-                      onMouseLeave={(e) => {
-                        const video = e.currentTarget.querySelector('video');
-                        if (video) { video.pause(); video.currentTime = 0; }
-                      }}
-                    >
-                      {/* Screenshot thumbnail */}
-                      <img
-                        src={`/portfolio/${project.slug}.webp`}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover/preview:opacity-0"
-                        loading={activeIndex < 2 ? 'eager' : 'lazy'}
-                      />
-
-                      {/* Scroll video */}
-                      <video
-                        key={project.slug}
-                        src={`/portfolio/${project.slug}.mp4`}
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover/preview:opacity-100"
-                      />
-
-                      {/* Hover overlay */}
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors flex items-center justify-center group/link z-10"
-                      >
-                        <span className="opacity-0 group-hover/link:opacity-100 transition-opacity bg-black/80 backdrop-blur-sm px-5 py-2.5 rounded-full text-sm text-white flex items-center gap-2">
-                          {t('livePreview')}
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                          </svg>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
+                  </a>
 
                   {/* Glow */}
                   <div
