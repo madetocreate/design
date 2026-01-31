@@ -9,7 +9,7 @@ const projects = [
     title: 'AURORA',
     subtitle: 'HEIGHTS',
     tagline: 'Luxury real estate experience in the heart of the city',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80',
     href: '/projects/aurora-heights',
   },
   {
@@ -17,7 +17,7 @@ const projects = [
     title: 'MERIDIAN',
     subtitle: 'STUDIO',
     tagline: 'Creative agency rebranding and digital platform',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80',
+    image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&q=80',
     href: '/projects/meridian-studio',
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     title: 'NOVA',
     subtitle: 'COLLECTIVE',
     tagline: 'Fashion brand identity and e-commerce design',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80',
     href: '/projects/nova-collective',
   },
 ];

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { Logo } from '@/components/ui/Logo';
 
 export function Footer() {
   const t = useTranslations();
@@ -13,8 +14,8 @@ export function Footer() {
       <div className="container py-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           {/* Logo */}
-          <Link href="/" className="text-xl tracking-[0.15em] font-light uppercase">
-            Studio Meyer
+          <Link href="/" className="group">
+            <Logo size={36} className="transition-transform duration-500 group-hover:scale-105" />
           </Link>
 
           {/* Navigation */}
@@ -27,6 +28,9 @@ export function Footer() {
             </Link>
             <Link href="/services" className="hover:text-[var(--color-foreground)] transition-colors">
               {t('nav.services')}
+            </Link>
+            <Link href="/pricing" className="hover:text-[var(--color-foreground)] transition-colors">
+              {t('nav.pricing')}
             </Link>
             <Link href="/about" className="hover:text-[var(--color-foreground)] transition-colors">
               {t('nav.about')}

@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
+import { Logo } from '@/components/ui/Logo';
 
 const locales = ['de', 'en', 'es'] as const;
 
@@ -11,7 +12,6 @@ export function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
 
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +30,8 @@ export function Header() {
   const switchLocale = (newLocale: string) => {
     const pathWithoutLocale = getPathWithoutLocale();
     const newPath = newLocale === 'de' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`;
-    router.push(newPath);
+    // Use window.location for reliable locale switching with as-needed prefix
+    window.location.href = newPath;
   };
 
   useEffect(() => {
@@ -70,8 +71,9 @@ export function Header() {
     { href: '/', label: t('home'), num: '01' },
     { href: '/portfolio', label: t('portfolio'), num: '02' },
     { href: '/services', label: t('services'), num: '03' },
-    { href: '/about', label: t('about'), num: '04' },
-    { href: '/contact', label: t('contact'), num: '05' },
+    { href: '/pricing', label: t('pricing'), num: '04' },
+    { href: '/about', label: t('about'), num: '05' },
+    { href: '/contact', label: t('contact'), num: '06' },
   ];
 
   return (
@@ -126,11 +128,7 @@ export function Header() {
             href="/"
             className="absolute left-1/2 -translate-x-1/2 group"
           >
-            <img
-              src="/studio-meyer-logo.png"
-              alt="Studio Meyer"
-              className="h-8 md:h-10 w-auto transition-transform duration-500 group-hover:scale-105 brightness-0 invert"
-            />
+            <Logo size={44} className="transition-transform duration-500 group-hover:scale-105" />
           </Link>
 
           {/* Language Switcher - Right */}
@@ -213,13 +211,8 @@ export function Header() {
           }`} style={{ transitionDelay: '600ms' }}>
             <div className="container">
               <div className="flex justify-between items-center pt-8 border-t border-[var(--color-border)]">
-                {/* Email - subtle */}
-                <a
-                  href="mailto:hello@studiomeyer.io"
-                  className="text-sm text-[var(--color-foreground-muted)] hover:text-[var(--color-accent)] transition-colors"
-                >
-                  hello@studiomeyer.io
-                </a>
+                {/* Logo */}
+                <Logo size={28} className="opacity-50" />
 
                 {/* Social Icons */}
                 <div className="flex gap-3">

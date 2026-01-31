@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
+import { CtaSection } from '@/components/sections/CtaSection';
 
 
 const portfolioProjects = [
@@ -127,7 +128,7 @@ const portfolioProjects = [
   },
   {
     id: 6,
-    title: 'Meyer Store',
+    title: 'Online-Shop',
     subtitle: {
       de: 'Premium E-Commerce',
       en: 'Premium E-Commerce',
@@ -148,6 +149,78 @@ const portfolioProjects = [
     tech: ['Next.js', 'Medusa.js', 'Tailwind CSS'],
     year: '2025',
     color: '#6366f1',
+  },
+  {
+    id: 7,
+    title: 'Review Filter',
+    subtitle: {
+      de: 'Intelligentes Review-Management',
+      en: 'Smart Review Management',
+      es: 'Gestión Inteligente de Reseñas',
+    },
+    url: 'https://review.studiomeyer.io',
+    slug: 'review',
+    challenge: {
+      de: 'Ein SaaS-Produkt für intelligentes Bewertungsmanagement brauchte eine überzeugende Landing Page, die das Konzept sofort verständlich macht und Conversions maximiert.',
+      en: 'A SaaS product for intelligent review management needed a compelling landing page that instantly communicates the concept and maximizes conversions.',
+      es: 'Un producto SaaS para gestión inteligente de reseñas necesitaba una landing page convincente que comunique el concepto al instante y maximice las conversiones.',
+    },
+    solution: {
+      de: 'Eine conversion-optimierte Landing Page mit klarem Value Proposition, interaktivem Showcase und integriertem Shop. Clean Design mit Dark Navy Akzenten.',
+      en: 'A conversion-optimized landing page with clear value proposition, interactive showcase and integrated shop. Clean design with dark navy accents.',
+      es: 'Una landing page optimizada para conversión con propuesta de valor clara, showcase interactivo y tienda integrada. Diseño limpio con acentos azul marino.',
+    },
+    tech: ['Next.js', 'Tailwind CSS', 'i18n'],
+    year: '2026',
+    color: '#1e293b',
+  },
+  {
+    id: 8,
+    title: 'Studio Meyer',
+    subtitle: {
+      de: 'Agentur-Website',
+      en: 'Agency Website',
+      es: 'Sitio Web de Agencia',
+    },
+    url: 'https://studiomeyer.io',
+    slug: 'studiomeyer',
+    challenge: {
+      de: 'Die eigene Agentur-Website musste den höchsten Standard setzen — ein digitales Aushängeschild, das potenzielle Kunden sofort überzeugt und die Marke definiert.',
+      en: 'The agency website had to set the highest standard — a digital showcase that immediately convinces potential clients and defines the brand.',
+      es: 'El sitio web de la agencia tenía que establecer el estándar más alto — un escaparate digital que convenza inmediatamente a clientes potenciales y defina la marca.',
+    },
+    solution: {
+      de: 'Eine Premium-Website mit KI-Modernisierung als Fokus, immersiven Animationen und klarer Conversion-Strategie. Dark-Theme mit lila Akzenten.',
+      en: 'A premium website with AI modernization as focus, immersive animations and clear conversion strategy. Dark theme with purple accents.',
+      es: 'Un sitio web premium con modernización IA como enfoque, animaciones inmersivas y estrategia de conversión clara. Tema oscuro con acentos púrpura.',
+    },
+    tech: ['Next.js', 'GSAP', 'Tailwind CSS'],
+    year: '2026',
+    color: '#7c3aed',
+  },
+  {
+    id: 9,
+    title: 'Aklow Labs',
+    subtitle: {
+      de: 'KI-Automatisierung',
+      en: 'AI Automation',
+      es: 'Automatización IA',
+    },
+    url: 'https://aklow-labs.com',
+    slug: 'aklow',
+    challenge: {
+      de: 'Ein KI-Startup für Plug & Play Automatisierung brauchte eine überzeugende Plattform, die komplexe Technologie einfach und zugänglich präsentiert.',
+      en: 'An AI startup for plug & play automation needed a compelling platform that presents complex technology simply and accessibly.',
+      es: 'Una startup de IA para automatización plug & play necesitaba una plataforma convincente que presente tecnología compleja de forma simple y accesible.',
+    },
+    solution: {
+      de: 'Eine moderne SaaS-Plattform mit Dark-Theme, grünen Akzenten und klarer Produktkommunikation. iOS & Android App-Integration, Pricing-Transparenz.',
+      en: 'A modern SaaS platform with dark theme, green accents and clear product communication. iOS & Android app integration, pricing transparency.',
+      es: 'Una plataforma SaaS moderna con tema oscuro, acentos verdes y comunicación de producto clara. Integración de app iOS y Android, transparencia de precios.',
+    },
+    tech: ['Next.js', 'React', 'Tailwind CSS'],
+    year: '2026',
+    color: '#22c55e',
   },
 ];
 
@@ -328,7 +401,7 @@ export default function PortfolioPage() {
                   >
                     {/* Screenshot */}
                     <img
-                      src={`/portfolio/${project.slug}.webp`}
+                      src={`/portfolio/${project.slug}.png`}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
                       loading={activeIndex < 2 ? 'eager' : 'lazy'}
@@ -412,20 +485,8 @@ export default function PortfolioPage() {
         ))}
       </div>
 
-      {/* Bottom section */}
-      <div className="h-[50vh] flex items-center justify-center">
-        <div className="container text-center">
-          <p className="text-xs tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-6">
-            {t('readyToStart') || 'Ready to start?'}
-          </p>
-          <a
-            href="mailto:hello@studiomeyer.io"
-            className="text-3xl md:text-5xl font-light tracking-tight hover:text-[var(--color-accent)] transition-colors"
-          >
-            hello@studiomeyer.io
-          </a>
-        </div>
-      </div>
+      {/* CTA */}
+      <CtaSection />
 
       <style jsx>{`
         @keyframes fade-up {

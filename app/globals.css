@@ -16,6 +16,15 @@
   --color-border: rgba(255, 255, 255, 0.1);
   --color-border-hover: rgba(255, 255, 255, 0.2);
 
+  /* Foreground Opacity Scale */
+  --color-foreground-faint: rgba(255, 255, 255, 0.1);
+  --color-foreground-dim: rgba(255, 255, 255, 0.4);
+
+  /* Surface (Background Opacity Scale) */
+  --color-surface-faint: rgba(255, 255, 255, 0.03);
+  --color-surface-dim: rgba(255, 255, 255, 0.06);
+  --color-surface-muted: rgba(255, 255, 255, 0.1);
+
   /* Neutrals */
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f5f5f5;
@@ -44,8 +53,28 @@
   --font-size-display: clamp(4rem, 15vw, 12rem);
 
   /* Spacing */
-  --spacing-section: clamp(4rem, 10vh, 8rem);
-  --spacing-container: clamp(1rem, 5vw, 3rem);
+  --spacing-xs: clamp(0.5rem, 1vw, 1rem);
+  --spacing-sm: clamp(1rem, 2vw, 1.5rem);
+  --spacing-md: clamp(1.5rem, 3vw, 2.5rem);
+  --spacing-lg: clamp(2rem, 5vw, 4rem);
+  --spacing-xl: clamp(3rem, 8vw, 6rem);
+  --spacing-section-sm: clamp(3rem, 6vh, 5rem);
+  --spacing-section: clamp(6rem, 14vh, 12rem);
+  --spacing-section-lg: clamp(8rem, 18vh, 16rem);
+  --spacing-container: clamp(1.5rem, 5vw, 3rem);
+
+  /* Line Height Scale */
+  --leading-display: 0.85;
+  --leading-tight: 1.0;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+
+  /* Letter Spacing Scale */
+  --tracking-tight: -0.03em;
+  --tracking-normal: -0.02em;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.2em;
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -151,7 +180,7 @@ a:focus-visible {
    ============================================ */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -160,32 +189,38 @@ h1, h2, h3, h4, h5, h6 {
 .text-display {
   font-size: var(--font-size-display);
   font-weight: 200;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-display);
 }
 
 .text-heading-1 {
   font-size: clamp(3rem, 8vw, var(--font-size-7xl));
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
 }
 
 .text-heading-2 {
   font-size: clamp(2rem, 5vw, var(--font-size-5xl));
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
 }
 
 .text-heading-3 {
   font-size: clamp(1.5rem, 3vw, var(--font-size-3xl));
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
 }
 
 .text-body {
   font-size: var(--font-size-base);
-  line-height: 1.7;
+  line-height: var(--leading-relaxed);
   color: var(--color-foreground-muted);
 }
 
 .text-label {
   font-size: var(--font-size-sm);
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
 }
 
@@ -202,6 +237,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .section {
   padding-block: var(--spacing-section);
+}
+
+.section-sm {
+  padding-block: var(--spacing-section-sm);
+}
+
+.section-lg {
+  padding-block: var(--spacing-section-lg);
 }
 
 /* ============================================
@@ -340,6 +383,16 @@ a:hover {
   color: var(--color-background);
 }
 
+.btn-lg {
+  padding: 1rem 2.5rem;
+  font-size: var(--font-size-base);
+}
+
+.btn-xl {
+  padding: 1.25rem 3rem;
+  font-size: var(--font-size-lg);
+}
+
 .btn-primary {
   border-color: var(--color-accent);
   background: var(--color-accent);
@@ -366,7 +419,7 @@ a:hover {
 
 /* Number badges */
 .number-badge {
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: var(--font-size-sm);
   font-weight: 400;
   color: var(--color-foreground-muted);

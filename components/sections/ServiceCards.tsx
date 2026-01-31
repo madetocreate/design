@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 const services = [
@@ -10,7 +9,6 @@ const services = [
     subtitle: 'Design',
     tagline: 'Digital experiences that inspire',
     description: 'We craft premium websites with pixel-perfect attention to detail and seamless user experiences',
-    image: 'https://picsum.photos/seed/webdesign/800/1000',
     href: '/services/web-design',
   },
   {
@@ -19,7 +17,6 @@ const services = [
     subtitle: 'Identity',
     tagline: 'A visual voice for your brand',
     description: 'We build cohesive brand identities that communicate your unique story and values',
-    image: 'https://picsum.photos/seed/branding/800/1000',
     href: '/services/branding',
   },
 ];
@@ -28,19 +25,6 @@ export function ServiceCards() {
   return (
     <section className="relative py-24">
       <div className="container">
-        {/* Section Header */}
-        <div className="mb-16">
-          <div className="line-h mb-8" />
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 className="text-heading-2">
-              Our <span className="text-[var(--color-primary)]">services</span>
-            </h2>
-            <p className="text-body max-w-md">
-              We provide comprehensive solutions for brands seeking excellence in digital presence.
-            </p>
-          </div>
-        </div>
-
         {/* Cards Grid */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           {services.map((service) => (
@@ -49,16 +33,6 @@ export function ServiceCards() {
               href={service.href}
               className="group relative block aspect-[4/5] overflow-hidden bg-[var(--color-neutral-900)]"
             >
-              {/* Background Image */}
-              <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                />
-              </div>
-
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent opacity-90" />
 

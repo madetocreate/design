@@ -1,12 +1,13 @@
 {
   "meta": {
-    "title": "Studio Meyer | Premium Web Design & Development",
-    "description": "We create exceptional digital experiences with precision, creativity, and purpose."
+    "title": "Studio Meyer | Premium Web Design as a Subscription — from €199/month",
+    "description": "Professional websites at a fixed monthly rate. Design, development & hosting included. After 12 months, the website is yours to keep."
   },
   "nav": {
     "home": "Home",
     "portfolio": "Portfolio",
     "services": "Services",
+    "pricing": "Pricing",
     "about": "About",
     "contact": "Contact",
     "openMenu": "Open menu",
@@ -16,20 +17,20 @@
     "title": "Studio Meyer",
     "tagline": "Digital Design Studio",
     "scroll": "Scroll",
-    "year": "2024"
+    "year": "2026"
   },
   "services": {
     "title": "Our Services",
     "subtitle": "What we offer",
-    "heroTitle": "We build digital",
-    "heroHighlight": "Experiences",
-    "heroDescription": "From the first idea to the finished product — we combine design, technology and strategy for exceptional results.",
+    "heroTitle": "Websites that make clients",
+    "heroHighlight": "thrive",
+    "heroDescription": "We combine excellent design with cutting-edge technology — and deliver results that sell. All in a flexible subscription.",
     "statsProjects": "Projects",
     "statsYears": "Years Experience",
     "statsSatisfaction": "Satisfaction",
     "statsSupport": "Support",
     "learnMore": "Learn more",
-    "ctaLabel": "Ready to start?",
+    "ctaLabel": "Ready for your new website?",
     "ctaTitle": "Let's talk",
     "webdesign": {
       "title": "Web Design",
@@ -54,26 +55,52 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "subtitle": "Our Work",
-    "description": "Discover our selected projects. Each website tells a story.",
+    "subtitle": "Our References",
+    "description": "Every project a proof point. See what we've built for our clients.",
     "scrollToFlip": "Scroll to flip",
     "challenge": "The Challenge",
     "solution": "Our Solution",
     "visitWebsite": "Visit website",
     "livePreview": "View live",
-    "readyToStart": "Ready to start?"
+    "readyToStart": "Start your project?"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Transparent pricing",
+    "description": "Professional websites at a fixed monthly rate. No hidden costs, no risk.",
+    "monthly": "per month",
+    "popular": "Popular",
+    "startProject": "Start project",
+    "included": "Included",
+    "ownership": "After 12 months, the website is yours — complete with source code.",
+    "ownershipTitle": "Your property after 12 months",
+    "ownershipDescription": "No leasing, no fine print. After 12 months, the entire website — including source code, design assets and CMS — becomes your property. No additional costs.",
+    "faq": "FAQ",
+    "cta": "Ready to start?"
   },
   "about": {
     "title": "About Us",
-    "description": "We are a team of passionate designers and developers."
+    "subtitle": "Who we are",
+    "description": "We are Studio Meyer — a digital design studio from Germany. We build websites that move businesses forward.",
+    "storyTitle": "Our Story",
+    "storyText": "What started as a freelance project is now a specialized studio for premium web design. We have one simple goal: every website should be the best in its industry.",
+    "valuesTitle": "What we believe in",
+    "approachTitle": "Our Approach",
+    "approachText": "We don't work like an agency. No project manager overhead, no endless meetings. Instead: direct communication, fast iterations and a result that exceeds your expectations."
   },
   "contact": {
     "title": "Contact",
     "subtitle": "Let's talk",
-    "description": "Ready for your next project? We look forward to hearing from you.",
+    "description": "Ready for a website that transforms your business? Get in touch — we respond within 24 hours.",
     "email": "Email",
-    "phone": "Phone",
-    "address": "Address"
+    "address": "Location",
+    "formName": "Your name",
+    "formEmail": "Your email",
+    "formMessage": "Tell us about your project",
+    "formBudget": "Budget range",
+    "formSend": "Send message",
+    "formSuccess": "Thank you! We'll get back to you within 24 hours.",
+    "or": "Or email us directly"
   },
   "footer": {
     "copyright": "Studio Meyer. All rights reserved.",

@@ -2,42 +2,59 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { LottieIcon } from '@/components/ui/LottieIcon';
-
-// Free Lottie animations from LottieFiles CDN
-const serviceLotties = {
-  webDesign: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159f/IGmMCqhzpt.json',
-  development: 'https://lottie.host/cc309045-3a42-4b43-927e-1f1e3e15370f/JMDDJqfAvP.json',
-  ai: 'https://lottie.host/f8ac tried-4f6b-4b8a-b5d3-3e8b0b7b6e2a/placeholder.json',
-  branding: 'https://lottie.host/5b2e9f16-9c8e-4b8e-b5d3-3e8b0b7b6e2a/placeholder.json',
-};
+import { CtaSection } from '@/components/sections/CtaSection';
 
 const services = [
   {
     id: 'webdesign',
     number: '01',
     color: '#c8a97e',
-    features: ['Responsive Design', 'UI/UX Design', 'Motion Design', 'Prototyping'],
-  },
-  {
-    id: 'development',
-    number: '02',
-    color: '#6366f1',
-    features: ['Next.js & React', 'TypeScript', 'API Integration', 'Performance'],
+    features: ['Responsive Design', 'UI/UX Design', 'Motion Design', 'SEO & Performance', 'CMS Integration'],
+    icon: (
+      <>
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </>
+    ),
   },
   {
     id: 'ai',
-    number: '03',
+    number: '02',
     color: '#2dd4bf',
-    features: ['AI Chatbots', 'Automation', 'Content Generation', 'Data Analysis'],
-  },
-  {
-    id: 'branding',
-    number: '04',
-    color: '#f472b6',
-    features: ['Brand Strategy', 'Visual Identity', 'Logo Design', 'Brand Guidelines'],
+    features: ['AI Chatbots', 'Workflow Automation', 'Content Generation', 'Data Analysis', 'Personalisierung'],
+    icon: (
+      <>
+        <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z" />
+        <path d="M6 10v1a6 6 0 0 0 12 0v-1" />
+        <path d="M12 17v5" />
+        <path d="M8 22h8" />
+      </>
+    ),
   },
 ];
+
+const steps = {
+  de: [
+    { number: '01', title: 'Abo wählen', description: 'Paket auswählen oder Kontakt aufnehmen. Kein Telefonat nötig — alles läuft digital.' },
+    { number: '02', title: 'Onboarding', description: 'Wir erfassen Ihre Wünsche und Informationen online. Schnell, strukturiert und unkompliziert.' },
+    { number: '03', title: 'Wir liefern', description: 'Design, Code, Hosting — wir kümmern uns um alles. Schnelle Auslieferung, alles inklusive.' },
+    { number: '04', title: 'Weiterentwicklung', description: 'Monatliche Updates, neue Features und kontinuierliche Optimierung. Ihre Website wächst mit Ihnen.' },
+  ],
+  en: [
+    { number: '01', title: 'Choose a plan', description: 'Select a package or get in touch. No phone call needed — everything runs digitally.' },
+    { number: '02', title: 'Onboarding', description: 'We capture your wishes and information online. Fast, structured and straightforward.' },
+    { number: '03', title: 'We deliver', description: 'Design, code, hosting — we take care of everything. Fast delivery, all inclusive.' },
+    { number: '04', title: 'Continuous growth', description: 'Monthly updates, new features and continuous optimization. Your website grows with you.' },
+  ],
+  es: [
+    { number: '01', title: 'Elige un plan', description: 'Selecciona un paquete o contáctanos. Sin llamadas — todo funciona digitalmente.' },
+    { number: '02', title: 'Onboarding', description: 'Capturamos tus deseos e información online. Rápido, estructurado y sin complicaciones.' },
+    { number: '03', title: 'Entregamos', description: 'Diseño, código, hosting — nos encargamos de todo. Entrega rápida, todo incluido.' },
+    { number: '04', title: 'Crecimiento continuo', description: 'Actualizaciones mensuales, nuevas funciones y optimización continua. Tu web crece contigo.' },
+  ],
+};
+
+type LocaleKey = 'de' | 'en' | 'es';
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -46,17 +63,10 @@ function useScrollReveal() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); } },
+      { threshold: 0.1 }
     );
-
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -64,49 +74,18 @@ function useScrollReveal() {
   return { ref, visible };
 }
 
-function AnimatedCounter({ end, suffix = '', duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const start = performance.now();
-          function update(now: number) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(eased * end));
-            if (progress < 1) requestAnimationFrame(update);
-          }
-          requestAnimationFrame(update);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [end, duration]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count}{suffix}
-    </span>
-  );
-}
-
 export default function ServicesPage() {
   const t = useTranslations('services');
   const heroReveal = useScrollReveal();
-  const statsReveal = useScrollReveal();
   const cardsReveal = useScrollReveal();
+  const processReveal = useScrollReveal();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [locale, setLocale] = useState<string>('de');
+
+  useEffect(() => {
+    const pathLocale = window.location.pathname.split('/')[1];
+    if (['de', 'en', 'es'].includes(pathLocale)) setLocale(pathLocale);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -123,7 +102,6 @@ export default function ServicesPage() {
     <div className="bg-[var(--color-background)]">
       {/* === HERO === */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24">
-        {/* Animated gradient background */}
         <div className="absolute inset-0 opacity-30">
           <div
             className="absolute w-[60vw] h-[60vw] rounded-full blur-[120px] transition-transform duration-[2s]"
@@ -145,7 +123,6 @@ export default function ServicesPage() {
           />
         </div>
 
-        {/* Noise */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
@@ -154,116 +131,40 @@ export default function ServicesPage() {
         />
 
         <div ref={heroReveal.ref} className="container relative z-10 text-center max-w-5xl">
-          {/* Label */}
-          <div
-            className={`transition-all duration-700 ${
-              heroReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <div className={`transition-all duration-700 ${heroReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="inline-block px-4 py-1.5 border border-[var(--color-border)] rounded-full text-[10px] tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-8">
               {t('subtitle')}
             </span>
           </div>
-
-          {/* Title */}
           <h1
-            className={`text-5xl md:text-7xl lg:text-[5.5rem] font-light tracking-tight leading-[1.05] mb-8 transition-all duration-1000 ${
-              heroReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-            }`}
+            className={`text-5xl md:text-7xl lg:text-[5.5rem] font-light tracking-tight leading-[1.05] mb-8 transition-all duration-1000 ${heroReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '200ms' }}
           >
-            {t('heroTitle') || 'Wir bauen digitale'}
+            {t('heroTitle')}
             <br />
-            <span className="text-[var(--color-accent)]">
-              {t('heroHighlight') || 'Erlebnisse'}
-            </span>
+            <span className="text-[var(--color-accent)]">{t('heroHighlight')}</span>
           </h1>
-
-          {/* Description */}
           <p
-            className={`text-lg md:text-xl text-[var(--color-foreground-muted)] max-w-2xl mx-auto mb-12 leading-relaxed transition-all duration-1000 ${
-              heroReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className={`text-lg md:text-xl text-[var(--color-foreground-muted)] max-w-2xl mx-auto mb-12 leading-relaxed transition-all duration-1000 ${heroReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ transitionDelay: '400ms' }}
           >
-            {t('heroDescription') || 'Von der ersten Idee bis zum fertigen Produkt — wir vereinen Design, Technologie und Strategie.'}
+            {t('heroDescription')}
           </p>
-
-          {/* Floating Lottie decorations */}
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 opacity-20 hidden lg:block">
-            <div
-              className="transition-transform duration-[2s]"
-              style={{ transform: `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px)` }}
-            >
-              <LottieIcon
-                src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159f/IGmMCqhzpt.json"
-                size={200}
-                playOnHover={false}
-                loop
-              />
-            </div>
-          </div>
-          <div className="absolute top-1/3 right-0 translate-x-1/2 opacity-20 hidden lg:block">
-            <div
-              className="transition-transform duration-[2s]"
-              style={{ transform: `translate(${mousePos.x * -10}px, ${mousePos.y * -10}px)` }}
-            >
-              <LottieIcon
-                src="https://lottie.host/cc309045-3a42-4b43-927e-1f1e3e15370f/JMDDJqfAvP.json"
-                size={160}
-                playOnHover={false}
-                loop
-              />
-            </div>
-          </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-          <span className="text-[10px] tracking-[0.4em] uppercase text-[var(--color-foreground-subtle)]">
-            Scroll
-          </span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-[var(--color-foreground-subtle)]">Scroll</span>
           <div className="w-px h-12 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-foreground-muted)] to-transparent animate-pulse" />
           </div>
         </div>
       </section>
 
-      {/* === STATS === */}
-      <section ref={statsReveal.ref} className="py-24 border-y border-[var(--color-border)]">
-        <div className="container max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: 50, suffix: '+', label: t('statsProjects') || 'Projekte' },
-              { value: 12, suffix: '+', label: t('statsYears') || 'Jahre Erfahrung' },
-              { value: 99, suffix: '%', label: t('statsSatisfaction') || 'Zufriedenheit' },
-              { value: 24, suffix: '/7', label: t('statsSupport') || 'Support' },
-            ].map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`transition-all duration-700 ${
-                  statsReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${i * 150}ms` }}
-              >
-                <div className="text-4xl md:text-5xl lg:text-6xl font-light mb-2">
-                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-xs tracking-[0.2em] uppercase text-[var(--color-foreground-muted)]">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === SERVICE CARDS === */}
-      <section className="py-32">
-        <div className="container max-w-6xl">
-          {/* Section header */}
-          <div className="text-center mb-20">
-            <p className="text-xs tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-4">
+      {/* === SERVICE CARDS — 2 Cards, centered, bigger === */}
+      <section className="py-32 md:py-40">
+        <div className="container max-w-5xl">
+          <div className="text-center mb-24">
+            <p className="text-xs tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-6">
               {t('subtitle')}
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
@@ -271,8 +172,7 @@ export default function ServicesPage() {
             </h2>
           </div>
 
-          {/* Cards Grid */}
-          <div ref={cardsReveal.ref} className="grid md:grid-cols-2 gap-6">
+          <div ref={cardsReveal.ref} className="grid md:grid-cols-2 gap-8 lg:gap-10">
             {services.map((service, index) => (
               <ServiceCard
                 key={service.id}
@@ -286,34 +186,54 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* === PROCESS SECTION === */}
-      <ProcessSection />
+      {/* === PROCESS SECTION — Better designed === */}
+      <section className="py-32 md:py-40">
+        <div className="container max-w-6xl">
+          <div className="text-center mb-24">
+            <p className="text-xs tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-6">
+              {locale === 'de' ? 'Unser Prozess' : locale === 'es' ? 'Nuestro Proceso' : 'Our Process'}
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
+              {locale === 'de' ? 'Wie wir arbeiten' : locale === 'es' ? 'Cómo trabajamos' : 'How we work'}
+            </h2>
+          </div>
 
-      {/* === CTA === */}
-      <section className="py-32 text-center">
-        <div className="container max-w-3xl">
-          <p className="text-xs tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-6">
-            {t('ctaLabel') || 'Bereit loszulegen?'}
-          </p>
-          <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-8">
-            {t('ctaTitle') || 'Lassen Sie uns reden'}
-          </h2>
-          <a
-            href="mailto:hello@studiomeyer.io"
-            className="inline-flex items-center gap-3 px-8 py-4 border border-[var(--color-border)] rounded-full text-sm tracking-wider uppercase hover:bg-[var(--color-foreground)] hover:text-[var(--color-background)] transition-all duration-500 group"
-          >
-            <span>hello@studiomeyer.io</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="transition-transform group-hover:translate-x-1">
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </a>
+          <div ref={processReveal.ref} className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {(steps[locale as LocaleKey] || steps.de).map((step, i) => (
+              <div
+                key={step.number}
+                className={`relative overflow-hidden rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-border-hover)] p-10 md:p-12 transition-all duration-700 hover:-translate-y-1 hover:shadow-lg ${
+                  processReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                }`}
+                style={{ transitionDelay: `${i * 120}ms` }}
+              >
+                {/* Large background number */}
+                <span className="absolute top-4 right-6 text-[7rem] font-extralight leading-none tracking-tighter text-[var(--color-foreground)] opacity-[0.04] select-none">
+                  {step.number}
+                </span>
+
+                <div className="relative z-10">
+                  <span className="inline-block text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-6">
+                    Schritt {step.number}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-light tracking-tight mb-4">{step.title}</h3>
+                  <p className="text-base text-[var(--color-foreground-muted)] leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* === CTA === */}
+      <CtaSection />
     </div>
   );
 }
 
-/* === SERVICE CARD COMPONENT === */
+/* === SERVICE CARD COMPONENT — Centered bullets === */
 function ServiceCard({
   service,
   index,
@@ -351,7 +271,7 @@ function ServiceCard({
         transitionDelay: `${index * 150}ms`,
         transform: visible
           ? hovered
-            ? `perspective(1000px) rotateX(${mouseLocal.y * -3}deg) rotateY(${mouseLocal.x * 3}deg) scale(1.02)`
+            ? `perspective(1000px) rotateX(${mouseLocal.y * -2}deg) rotateY(${mouseLocal.x * 2}deg) scale(1.01)`
             : 'none'
           : 'translateY(64px)',
       }}
@@ -364,37 +284,25 @@ function ServiceCard({
     >
       {/* Glow follow cursor */}
       <div
-        className="absolute w-[300px] h-[300px] rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none -z-0"
+        className="absolute w-[400px] h-[400px] rounded-full blur-[100px] opacity-0 group-hover:opacity-15 transition-opacity duration-500 pointer-events-none -z-0"
         style={{
           background: service.color,
-          left: `calc(50% + ${mouseLocal.x * 100}px - 150px)`,
-          top: `calc(50% + ${mouseLocal.y * 100}px - 150px)`,
+          left: `calc(50% + ${mouseLocal.x * 120}px - 200px)`,
+          top: `calc(50% + ${mouseLocal.y * 120}px - 200px)`,
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 p-8 md:p-10">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-8">
-          <div>
-            <span
-              className="text-5xl md:text-6xl font-light transition-colors duration-500"
-              style={{ color: hovered ? service.color : 'var(--color-foreground)', opacity: 0.15 }}
-            >
-              {service.number}
-            </span>
-          </div>
-
-          {/* Lottie Icon */}
+      {/* Content — Centered */}
+      <div className="relative z-10 p-10 md:p-14 lg:p-16 text-center min-h-[500px] flex flex-col justify-between">
+        {/* Icon */}
+        <div className="flex justify-center mb-8">
           <div
-            className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center border border-[var(--color-border)] transition-all duration-500 group-hover:border-transparent"
-            style={{
-              backgroundColor: hovered ? `${service.color}15` : 'transparent',
-            }}
+            className="w-20 h-20 rounded-2xl flex items-center justify-center border border-[var(--color-border)] transition-all duration-500 group-hover:border-transparent"
+            style={{ backgroundColor: hovered ? `${service.color}15` : 'transparent' }}
           >
             <svg
-              width="32"
-              height="32"
+              width="36"
+              height="36"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -402,56 +310,31 @@ function ServiceCard({
               className="transition-colors duration-500"
               style={{ color: hovered ? service.color : 'var(--color-foreground-muted)' }}
             >
-              {service.id === 'webdesign' && (
-                <>
-                  <rect x="2" y="3" width="20" height="14" rx="2" />
-                  <path d="M8 21h8M12 17v4" />
-                </>
-              )}
-              {service.id === 'development' && (
-                <>
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </>
-              )}
-              {service.id === 'ai' && (
-                <>
-                  <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z" />
-                  <path d="M6 10v1a6 6 0 0 0 12 0v-1" />
-                  <path d="M12 17v5" />
-                  <path d="M8 22h8" />
-                </>
-              )}
-              {service.id === 'branding' && (
-                <>
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </>
-              )}
+              {service.icon}
             </svg>
           </div>
         </div>
 
         {/* Title */}
-        <h3
-          className="text-2xl md:text-3xl font-light tracking-tight mb-3 transition-colors duration-500"
-          style={{ color: hovered ? service.color : 'var(--color-foreground)' }}
-        >
-          {t(titleKey)}
-        </h3>
+        <div className="mb-8">
+          <h3
+            className="text-3xl md:text-4xl font-light tracking-tight mb-4 transition-colors duration-500"
+            style={{ color: hovered ? service.color : 'var(--color-foreground)' }}
+          >
+            {t(titleKey)}
+          </h3>
 
-        {/* Description */}
-        <p className="text-sm text-[var(--color-foreground-muted)] leading-relaxed mb-8">
-          {t(descKey)}
-        </p>
+          <p className="text-base text-[var(--color-foreground-muted)] leading-relaxed max-w-sm mx-auto">
+            {t(descKey)}
+          </p>
+        </div>
 
-        {/* Features */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        {/* Features — Centered */}
+        <div className="flex flex-wrap justify-center gap-3">
           {service.features.map((feature, fi) => (
             <span
               key={feature}
-              className="px-3 py-1 text-[10px] tracking-wider uppercase rounded-full border transition-all duration-500"
+              className="px-4 py-1.5 text-[11px] tracking-wider uppercase rounded-full border transition-all duration-500"
               style={{
                 borderColor: hovered ? `${service.color}40` : 'var(--color-border)',
                 color: hovered ? service.color : 'var(--color-foreground-muted)',
@@ -462,82 +345,7 @@ function ServiceCard({
             </span>
           ))}
         </div>
-
-        {/* Bottom line */}
-        <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border)]">
-          <span className="text-xs tracking-wider uppercase text-[var(--color-foreground-subtle)]">
-            {t('learnMore') || 'Mehr erfahren'}
-          </span>
-          <div
-            className="w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500"
-            style={{
-              borderColor: hovered ? service.color : 'var(--color-border)',
-              backgroundColor: hovered ? service.color : 'transparent',
-              color: hovered ? '#fff' : 'var(--color-foreground-muted)',
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </div>
-        </div>
       </div>
     </div>
-  );
-}
-
-/* === PROCESS SECTION === */
-function ProcessSection() {
-  const reveal = useScrollReveal();
-
-  const steps = [
-    { number: '01', title: 'Discovery', description: 'Analyse, Research und Strategie-Entwicklung' },
-    { number: '02', title: 'Design', description: 'Wireframes, Prototypen und Visual Design' },
-    { number: '03', title: 'Development', description: 'Code, Testing und Performance-Optimierung' },
-    { number: '04', title: 'Launch', description: 'Deployment, Monitoring und kontinuierliche Verbesserung' },
-  ];
-
-  return (
-    <section className="py-32 bg-[var(--color-surface)]">
-      <div className="container max-w-6xl">
-        <div className="text-center mb-20">
-          <p className="text-xs tracking-[0.4em] uppercase text-[var(--color-foreground-muted)] mb-4">
-            Unser Prozess
-          </p>
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight">
-            Wie wir arbeiten
-          </h2>
-        </div>
-
-        <div ref={reveal.ref} className="relative">
-          {/* Connecting line */}
-          <div className="absolute top-0 bottom-0 left-[28px] md:left-1/2 w-px bg-[var(--color-border)] hidden md:block" />
-
-          <div className="space-y-16 md:space-y-0">
-            {steps.map((step, i) => (
-              <div
-                key={step.number}
-                className={`relative md:grid md:grid-cols-2 md:gap-16 md:py-12 transition-all duration-700 ${
-                  reveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-                style={{ transitionDelay: `${i * 200}ms` }}
-              >
-                {/* Left / Right alternating */}
-                <div className={`${i % 2 === 0 ? 'md:text-right md:pr-16' : 'md:col-start-2 md:pl-16'}`}>
-                  <span className="text-5xl font-light text-[var(--color-foreground)]/10 mb-2 block">
-                    {step.number}
-                  </span>
-                  <h3 className="text-2xl font-light tracking-tight mb-2">{step.title}</h3>
-                  <p className="text-sm text-[var(--color-foreground-muted)]">{step.description}</p>
-                </div>
-
-                {/* Center dot */}
-                <div className="absolute left-[24px] md:left-1/2 top-0 md:top-12 w-[9px] h-[9px] rounded-full bg-[var(--color-accent)] md:-translate-x-1/2 hidden md:block" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }

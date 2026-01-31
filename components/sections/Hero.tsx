@@ -6,21 +6,21 @@ import Image from 'next/image';
 // Hero tiles - overlapping around center text like selemen.liqium.com
 const heroImages = [
   // Top-left large
-  { id: 1, src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80', top: '5%', left: '2%', width: '22vw', height: '28vh', z: 2, speed: 0.3 },
+  { id: 1, src: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80', top: '5%', left: '2%', width: '22vw', height: '28vh', z: 2, speed: 0.3 },
   // Top-center-left small
-  { id: 2, src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=80', top: '8%', left: '20%', width: '14vw', height: '18vh', z: 1, speed: -0.2 },
+  { id: 2, src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80', top: '8%', left: '20%', width: '14vw', height: '18vh', z: 1, speed: -0.2 },
   // Center-left tall (overlaps text)
-  { id: 3, src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80', top: '18%', left: '26%', width: '16vw', height: '35vh', z: 3, speed: 0.15 },
+  { id: 3, src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80', top: '18%', left: '26%', width: '16vw', height: '35vh', z: 3, speed: 0.15 },
   // Bottom-left
-  { id: 4, src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80', top: '62%', left: '5%', width: '24vw', height: '28vh', z: 2, speed: -0.25 },
+  { id: 4, src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80', top: '62%', left: '5%', width: '24vw', height: '28vh', z: 2, speed: -0.25 },
   // Top-right
-  { id: 5, src: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&q=80', top: '2%', left: '58%', width: '22vw', height: '26vh', z: 2, speed: 0.2 },
+  { id: 5, src: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80', top: '2%', left: '58%', width: '22vw', height: '26vh', z: 2, speed: 0.2 },
   // Bottom-right
-  { id: 6, src: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80', top: '58%', left: '54%', width: '22vw', height: '30vh', z: 3, speed: -0.3 },
+  { id: 6, src: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80', top: '58%', left: '54%', width: '22vw', height: '30vh', z: 3, speed: -0.3 },
   // Right tall (overlaps text)
-  { id: 7, src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80', top: '12%', left: '62%', width: '16vw', height: '38vh', z: 1, speed: 0.35 },
+  { id: 7, src: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&q=80', top: '12%', left: '62%', width: '16vw', height: '38vh', z: 1, speed: 0.35 },
   // Far right small
-  { id: 8, src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&q=80', top: '5%', left: '80%', width: '16vw', height: '22vh', z: 2, speed: -0.15 },
+  { id: 8, src: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=500&q=80', top: '5%', left: '80%', width: '16vw', height: '22vh', z: 2, speed: -0.15 },
 ];
 
 export function Hero() {

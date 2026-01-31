@@ -1,12 +1,13 @@
 {
   "meta": {
-    "title": "Studio Meyer | Diseño y Desarrollo Web Premium",
-    "description": "Creamos experiencias digitales excepcionales con precisión, creatividad y propósito."
+    "title": "Studio Meyer | Diseño Web Premium por Suscripción — desde 199 €/mes",
+    "description": "Sitios web profesionales a precio fijo mensual. Diseño, desarrollo y hosting incluidos. Después de 12 meses, el sitio web es tuyo."
   },
   "nav": {
     "home": "Inicio",
     "portfolio": "Portfolio",
     "services": "Servicios",
+    "pricing": "Precios",
     "about": "Nosotros",
     "contact": "Contacto",
     "openMenu": "Abrir menú",
@@ -16,20 +17,20 @@
     "title": "Studio Meyer",
     "tagline": "Estudio de Diseño Digital",
     "scroll": "Desplazar",
-    "year": "2024"
+    "year": "2026"
   },
   "services": {
     "title": "Nuestros Servicios",
     "subtitle": "Lo que ofrecemos",
-    "heroTitle": "Construimos experiencias",
-    "heroHighlight": "Digitales",
-    "heroDescription": "Desde la primera idea hasta el producto final — combinamos diseño, tecnología y estrategia para resultados excepcionales.",
+    "heroTitle": "Sitios web que hacen prosperar a",
+    "heroHighlight": "los clientes",
+    "heroDescription": "Combinamos diseño excelente con tecnología de vanguardia — y entregamos resultados que venden. Todo en una suscripción flexible.",
     "statsProjects": "Proyectos",
     "statsYears": "Años de Experiencia",
     "statsSatisfaction": "Satisfacción",
     "statsSupport": "Soporte",
     "learnMore": "Saber más",
-    "ctaLabel": "¿Listo para empezar?",
+    "ctaLabel": "¿Listo para tu nuevo sitio web?",
     "ctaTitle": "Hablemos",
     "webdesign": {
       "title": "Diseño Web",
@@ -54,26 +55,52 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "subtitle": "Nuestro Trabajo",
-    "description": "Descubre nuestros proyectos seleccionados. Cada sitio web cuenta una historia.",
+    "subtitle": "Nuestras Referencias",
+    "description": "Cada proyecto una prueba. Descubre lo que hemos construido para nuestros clientes.",
     "scrollToFlip": "Desplaza para pasar",
     "challenge": "El Desafío",
     "solution": "Nuestra Solución",
     "visitWebsite": "Visitar sitio",
     "livePreview": "Ver en vivo",
-    "readyToStart": "¿Listo para empezar?"
+    "readyToStart": "¿Iniciar tu proyecto?"
+  },
+  "pricing": {
+    "title": "Precios",
+    "subtitle": "Precios transparentes",
+    "description": "Sitios web profesionales a precio fijo mensual. Sin costos ocultos, sin riesgo.",
+    "monthly": "por mes",
+    "popular": "Popular",
+    "startProject": "Iniciar proyecto",
+    "included": "Incluido",
+    "ownership": "Después de 12 meses, el sitio web es tuyo — con código fuente completo.",
+    "ownershipTitle": "Tu propiedad después de 12 meses",
+    "ownershipDescription": "Sin leasing, sin letra pequeña. Después de 12 meses, todo el sitio web — incluyendo código fuente, assets de diseño y CMS — pasa a ser tu propiedad. Sin costos adicionales.",
+    "faq": "Preguntas frecuentes",
+    "cta": "¿Listo para empezar?"
   },
   "about": {
     "title": "Sobre Nosotros",
-    "description": "Somos un equipo de diseñadores y desarrolladores apasionados."
+    "subtitle": "Quiénes somos",
+    "description": "Somos Studio Meyer — un estudio de diseño digital de Alemania. Construimos sitios web que impulsan negocios.",
+    "storyTitle": "Nuestra Historia",
+    "storyText": "Lo que comenzó como un proyecto freelance es ahora un estudio especializado en diseño web premium. Tenemos un objetivo simple: cada sitio web debe ser el mejor de su industria.",
+    "valuesTitle": "En lo que creemos",
+    "approachTitle": "Nuestro Enfoque",
+    "approachText": "No trabajamos como una agencia. Sin overhead de project managers, sin reuniones interminables. En su lugar: comunicación directa, iteraciones rápidas y un resultado que supera tus expectativas."
   },
   "contact": {
     "title": "Contacto",
     "subtitle": "Hablemos",
-    "description": "¿Listo para tu próximo proyecto? Esperamos tu mensaje.",
+    "description": "¿Listo para un sitio web que transforme tu negocio? Escríbenos — respondemos en 24 horas.",
     "email": "Email",
-    "phone": "Teléfono",
-    "address": "Dirección"
+    "address": "Ubicación",
+    "formName": "Tu nombre",
+    "formEmail": "Tu email",
+    "formMessage": "Cuéntanos sobre tu proyecto",
+    "formBudget": "Rango de presupuesto",
+    "formSend": "Enviar mensaje",
+    "formSuccess": "¡Gracias! Te responderemos en 24 horas.",
+    "or": "O envíanos un email directamente"
   },
   "footer": {
     "copyright": "Studio Meyer. Todos los derechos reservados.",

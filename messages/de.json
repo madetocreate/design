@@ -1,12 +1,13 @@
 {
   "meta": {
-    "title": "Studio Meyer | Premium Web Design & Entwicklung",
-    "description": "Wir erschaffen außergewöhnliche digitale Erlebnisse mit Präzision, Kreativität und Zielstrebigkeit."
+    "title": "Studio Meyer | Premium Webdesign als Abo — ab 199 €/Monat",
+    "description": "Professionelle Websites zum monatlichen Festpreis. Design, Entwicklung & Hosting inklusive. Nach 12 Monaten gehört die Website Ihnen."
   },
   "nav": {
     "home": "Home",
     "portfolio": "Portfolio",
     "services": "Leistungen",
+    "pricing": "Preise",
     "about": "Über uns",
     "contact": "Kontakt",
     "openMenu": "Menü öffnen",
@@ -16,21 +17,21 @@
     "title": "Studio Meyer",
     "tagline": "Digital Design Studio",
     "scroll": "Scrollen",
-    "year": "2024"
+    "year": "2026"
   },
   "services": {
     "title": "Unsere Leistungen",
     "subtitle": "Was wir anbieten",
-    "heroTitle": "Wir bauen digitale",
-    "heroHighlight": "Erlebnisse",
-    "heroDescription": "Von der ersten Idee bis zum fertigen Produkt — wir vereinen Design, Technologie und Strategie für außergewöhnliche Ergebnisse.",
+    "heroTitle": "Websites, die Kunden",
+    "heroHighlight": "begeistern",
+    "heroDescription": "Wir vereinen exzellentes Design mit modernster Technologie — und liefern Ergebnisse, die verkaufen. Alles im flexiblen Abo.",
     "statsProjects": "Projekte",
     "statsYears": "Jahre Erfahrung",
     "statsSatisfaction": "Zufriedenheit",
     "statsSupport": "Support",
     "learnMore": "Mehr erfahren",
-    "ctaLabel": "Bereit loszulegen?",
-    "ctaTitle": "Lassen Sie uns reden",
+    "ctaLabel": "Bereit für Ihre neue Website?",
+    "ctaTitle": "Lassen Sie uns sprechen",
     "webdesign": {
       "title": "Web Design",
       "description": "Individuelle Websites, die begeistern und konvertieren. Von der Konzeption über das UI/UX Design bis hin zur pixel-perfekten Umsetzung."
@@ -54,26 +55,52 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "subtitle": "Unsere Arbeiten",
-    "description": "Entdecken Sie unsere ausgewählten Projekte. Jede Website erzählt eine Geschichte.",
+    "subtitle": "Unsere Referenzen",
+    "description": "Jedes Projekt ein Beweis. Sehen Sie, was wir für unsere Kunden gebaut haben.",
     "scrollToFlip": "Scrollen zum Blättern",
     "challenge": "Die Herausforderung",
     "solution": "Unsere Lösung",
     "visitWebsite": "Website besuchen",
     "livePreview": "Live ansehen",
-    "readyToStart": "Bereit loszulegen?"
+    "readyToStart": "Ihr Projekt starten?"
+  },
+  "pricing": {
+    "title": "Preise",
+    "subtitle": "Transparente Preise",
+    "description": "Professionelle Websites zum festen Monatspreis. Keine versteckten Kosten, kein Risiko.",
+    "monthly": "pro Monat",
+    "popular": "Beliebt",
+    "startProject": "Projekt starten",
+    "included": "Inklusive",
+    "ownership": "Nach 12 Monaten gehört die Website Ihnen — komplett mit Quellcode.",
+    "ownershipTitle": "Ihr Eigentum nach 12 Monaten",
+    "ownershipDescription": "Kein Leasing, kein Kleingedrucktes. Nach 12 Monaten Laufzeit geht die gesamte Website — inklusive Quellcode, Design-Assets und CMS — in Ihr Eigentum über. Ohne Zusatzkosten.",
+    "faq": "Häufige Fragen",
+    "cta": "Bereit loszulegen?"
   },
   "about": {
     "title": "Über uns",
-    "description": "Wir sind ein Team aus leidenschaftlichen Designern und Entwicklern."
+    "subtitle": "Wer wir sind",
+    "description": "Wir sind Studio Meyer — ein Digital-Design-Studio aus Deutschland. Wir bauen Websites, die Unternehmen nach vorne bringen.",
+    "storyTitle": "Unsere Geschichte",
+    "storyText": "Was als Freelance-Projekt begann, ist heute ein spezialisiertes Studio für Premium-Webdesign. Wir haben ein einfaches Ziel: jede Website soll die beste ihrer Branche sein.",
+    "valuesTitle": "Woran wir glauben",
+    "approachTitle": "Unser Ansatz",
+    "approachText": "Wir arbeiten nicht wie eine Agentur. Kein Projektmanager-Overhead, keine endlosen Meetings. Stattdessen: direkte Kommunikation, schnelle Iterationen und ein Ergebnis, das Ihre Erwartungen übertrifft."
   },
   "contact": {
     "title": "Kontakt",
     "subtitle": "Lassen Sie uns sprechen",
-    "description": "Bereit für Ihr nächstes Projekt? Wir freuen uns auf Ihre Nachricht.",
+    "description": "Bereit für eine Website, die Ihr Geschäft verändert? Schreiben Sie uns — wir antworten innerhalb von 24 Stunden.",
     "email": "E-Mail",
-    "phone": "Telefon",
-    "address": "Adresse"
+    "address": "Standort",
+    "formName": "Ihr Name",
+    "formEmail": "Ihre E-Mail",
+    "formMessage": "Erzählen Sie uns von Ihrem Projekt",
+    "formBudget": "Budget-Rahmen",
+    "formSend": "Nachricht senden",
+    "formSuccess": "Vielen Dank! Wir melden uns innerhalb von 24 Stunden.",
+    "or": "Oder direkt per E-Mail"
   },
   "footer": {
     "copyright": "Studio Meyer. Alle Rechte vorbehalten.",
